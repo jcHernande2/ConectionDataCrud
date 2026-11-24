@@ -1,0 +1,20 @@
+# Archivos compilados
+bin/
+obj/
+
+# Configuración de Visual Studio y VS Code
+.vs/
+.vscode/
+
+# Archivos del sistema
+.DS_Store
+
+# Configuración local y secretos
+appsettings.Development.json
+secrets.json
+
+# Logs
+*.log
+
+# Archivos temporales
+*.tmp
