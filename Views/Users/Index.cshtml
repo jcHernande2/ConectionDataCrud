@@ -1,0 +1,47 @@
+﻿@model IEnumerable<ConectionDataCrud.Models.Users>
+@{
+    ViewData["Title"] = "Usuarios";
+}
+
+<h2>Listado de usuarios</h2>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Nombre</th>
+            <th>Email</th>
+            <th>Estado</th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var user in Model)
+        {
+            <tr>
+                <td>@user.Id</td>
+                <td>@user.Nombre</td>
+                <td>@user.Email</td>
+                <td>@(user.Activo ? "Activo" : "Inactivo")</td>
+                <td>
+                    <form asp-controller="Users"
+                          asp-action="Delete"
+                          asp-route-id="@user.Id"
+                          method="post"
+                          onsubmit="return confirm('¿Estás seguro de eliminar este usuario?');">
+
+                        @Html.AntiForgeryToken()
+
+                        <button type="submit" class="btn btn-danger btn-sm">
+                            Eliminar
+                        </button>
+                    </form>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+</div>
